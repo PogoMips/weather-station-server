@@ -9,7 +9,7 @@
         "start": "ts-node -r tsconfig-paths/register src/main.ts",
         "start:dev": "nodemon",
         "start:debug": "nodemon --config nodemon-debug.json",
-        "prestart:prod": "rimraf dist && tsc",
+        "prestart:prod": "rimraf dist && tsc && npm run copy-config && npm run copy-frontend",
         "start:prod": "node dist/main.js",
         "start:hmr": "node dist/server",
         "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -17,7 +17,9 @@
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
         "test:e2e": "jest --config ./test/jest-e2e.json",
-        "webpack": "webpack --config webpack.config.js"
+        "webpack": "webpack --config webpack.config.js",
+        "copy-config": "cp src/configuration.js dist/",
+        "copy-frontend": "cp -R ../weather-station-ui/dist/weather-station-ui/ dist/public"
     },
     "dependencies": {
         "@nestjs/common": "^5.1.0",

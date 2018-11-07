@@ -1,12 +1,12 @@
-import { Get, Controller } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Res } from '@nestjs/common';
+import * as path from 'path';
 
-@Controller('api/current')
+@Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor() {}
 
     @Get()
-    getDashboardData(): any {
-        return this.appService.getDashboardData();
+    getStaticContent(@Res() res): any {
+        return res.sendFile(path.join(__dirname, 'public/index.html'));
     }
 }
