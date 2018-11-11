@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { MockSensor } from './sensor/mock-sensor';
 
-const config = require('./configuration');
+export const config = require('./configuration');
 
 export interface IDashboardData {
     temperature: number;
